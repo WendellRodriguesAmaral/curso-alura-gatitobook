@@ -1,0 +1,20 @@
+<header class="sticky-top">
+    <nav class="navbar navbar-light bg-white">
+        <a class="navbar-brand" href="">GatitoBook</a>
+        <div *ngIf="user$ | async as user" > <!-- user$ | async = para nao precisar fazer o subscribe no Observable-->
+            <div *ngIf="user.name; else login">
+                <i class="fa fa-user-circle mt-1"></i>
+                <a class="mr-1" href="">{{user.name}}</a>
+                <a  (click)="logout()">Logout</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <ng-template #login>
+        <span class="navbar-text">
+            <a [routerLink]="['']" >Faça o login</a>
+        </span>
+
+    </ng-template>
+</header>
